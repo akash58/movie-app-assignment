@@ -1,30 +1,30 @@
 <template>
   <div>
     <v-form v-model="valid" ref="form">
-      <div class="d-flex">
-        <div class="select mx-1">
+      <v-layout>
+        <v-flex xs4 sm12 class="select mx-1">
           <span>Movie: </span>
           <select v-model="selectedMovie" required="">
             <option value="">Select a Movie</option>
             <option v-for="(movie_obj, movie) in movieNames" :value="movie">{{movie}}</option>
           </select>
-        </div>
+        </v-flex>
         
-        <div class="select mx-1" :class="timings.length == 0 ? 'disabled-css' : '' ">
+        <v-flex xs4 sm12 class="select mx-1" :class="timings.length == 0 ? 'disabled-css' : '' ">
           <span>Timings: </span>
           <select :disabled="timings.length == 0" v-model="selectedTimings" required="">
             <option value="">Select a Timings</option>
             <option v-for="(time_obj, time) in timings">{{time}}</option>
           </select>
-        </div>
-        <div class=" select mx-1" :class="seats.length == 0 ? 'disabled-css' : '' ">
+        </v-flex>
+        <v-flex xs4 sm12 class=" select mx-1" :class="seats.length == 0 ? 'disabled-css' : '' ">
           <span>Seats: </span>
           <select :disabled="seats.length == 0" v-model="selectedSeats" required="">
             <option value="">Select a Seats</option>
             <option v-for="seat in seats">{{seat}}</option>
           </select>
-        </div>
-      </div>
+        </v-flex>
+      </v-layout>
       <div class="text-xs-center my-3">
         <v-btn color="blue" class="white--text " @click="create.call(this, selectedMovie , selectedTimings , selectedSeats)">Book Ticket</v-btn>
       </div>
@@ -34,7 +34,7 @@
       :items="tasks"
       class="elevation-1"
       hide-actions
-      hide-headers
+      :headers="headers"
       v-if = "tasks.length > 0"
     >
       <template v-slot:items="props">
@@ -50,6 +50,11 @@
   export default {
     data () {
       return {
+        headers: [
+          { text: 'Movie Name', value: 'movieNames', align: 'center', sortable: false },
+          { text: 'Timings', value: 'timings', align: 'center', sortable: false },
+          { text: 'Seats', value: 'seats', align: 'center', sortable: false }
+        ],
         movieNames: {
           'Shawshank Redemption': {
             '10:00': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],

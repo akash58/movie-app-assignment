@@ -22,7 +22,7 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange">Book Ticket</v-btn>
+            <v-btn flat color="orange" @click="bookTicket">Book Ticket</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -47,7 +47,7 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange">Book Ticket</v-btn>
+            <v-btn flat color="orange" @click="bookTicket">Book Ticket</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -72,7 +72,7 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange">Book Ticket</v-btn>
+            <v-btn flat color="orange" @click="bookTicket">Book Ticket</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -97,7 +97,7 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange">Book Ticket</v-btn>
+            <v-btn flat color="orange" @click="bookTicket">Book Ticket</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -122,10 +122,20 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange">Book Ticket</v-btn>
+            <v-btn flat color="orange" @click="bookTicket">Book Ticket</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
+<script type="text/javascript">
+  export default {
+    methods: {
+      bookTicket () {
+        this.$router.push('book-movie')
+      }
+    }
+  }
+</script>
